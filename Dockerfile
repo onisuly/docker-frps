@@ -18,7 +18,6 @@ RUN apk add --no-cache --virtual .install-deps curl \
 VOLUME ["/conf"]
 
 EXPOSE 7000
-EXPOSE 8080
 
 CMD /frp/frps -c /conf/frps.ini
 
