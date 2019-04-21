@@ -6,7 +6,6 @@ LABEL maintainer "onisuly <onisuly@gmail.com>"
 # RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 
 RUN apk add --no-cache --virtual .install-deps curl \
-    && mkdir -p /aria2-ng \
     && FRP_VERSION=$(curl -sX GET "https://api.github.com/repos/fatedier/frp/releases/latest" | awk '/tag_name/{print $5;exit}' FS='["v"]') \
     && curl -o frp.tar.gz -L https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_linux_amd64.tar.gz \
     && mkdir /frp \
@@ -19,6 +18,7 @@ RUN apk add --no-cache --virtual .install-deps curl \
 VOLUME ["/conf"]
 
 EXPOSE 7000
+EXPOSE 8080
 
 CMD /frp/frps -c /conf/frps.ini
 
