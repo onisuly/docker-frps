@@ -11,3 +11,13 @@ docker run -d --name frps \
 -p 7000:7000 \
 onisuly/frps
 ```
+
+## Custom configuration file
+
+Mount customed conf file to your container.
+```shell
+docker run -d --name frps \
+-p 7000:7000 \
+-v /your/path/to/frps.ini:/conf/frps.ini \
+onisuly/frps
+```
